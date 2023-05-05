@@ -1,8 +1,7 @@
-const express = require("express")
-const app = express()
-const session = require("express-session")
-const main = require("./routes/main")
-const handlebars = require('express-handlebars')
+const express = require("express");
+const app = express();
+const session = require("express-session");
+const main = require("./routes/main");
 
 //CONFIG
     //SESSION
@@ -15,15 +14,12 @@ const handlebars = require('express-handlebars')
     }))
 
 //STATICS
-    app.use(express.static(__dirname+'/public'))
+
+    app.use(express.static(__dirname+'/public'));
 
 //ROUTES
 
-app.get("/", (req, res) => {
-
-    res.sendFile(__dirname+'/views/index.html')
-
-})
+    app.use(main);
 
 //OTHERS
 
@@ -31,6 +27,6 @@ const port = process.env.PORT || 8000
 
 app.listen(port, () => {
 
-    console.log('Servidor ativo...')    
+    console.log('Server on'); 
 
 })
