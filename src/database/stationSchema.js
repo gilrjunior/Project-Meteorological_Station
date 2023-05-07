@@ -17,7 +17,7 @@ const stationSchema = new mongoose.Schema({
     createAt: {
 
         type: Date,
-        default: new Date().now()
+        default: Date.now()
 
     }
 

@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+require('dotenv').config();
+
 
 //DATABASE CONNECTION SETUP
 mongoose.set('strictQuery', true);

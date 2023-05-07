@@ -1,11 +1,18 @@
 const express = require("express");
-const app = express();
+const station = require("../database/stationSchema")
 const router = express.Router();
 
     router.get("/", (req, res) => {
 
-        res.sendFile('C:/Users/User/Desktop/Projetos 5/Project-Meteorological_Station-node/src/views/index.html');
-        //ATTENTION: SWITCH THE FILE DIRECTORY IF SWITCH DESKTOP
+        station.findOne().sort({_id: "desc"}).then((information) => {
+
+            res.render("homepage/index", information);
+            
+        }).catch((err) => {
+
+            console.log("Error "+err);
+
+        })
 
     })
 

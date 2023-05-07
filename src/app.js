@@ -1,4 +1,5 @@
 const express = require("express");
+const handlebars = require('express-handlebars')
 const app = express();
 const session = require("express-session");
 const main = require("./routes/main");
@@ -14,10 +15,14 @@ require('dotenv').config();
 
     }))
 
+//HANDLEBARS    
+    app.engine('handlebars', handlebars.engine({ defaultLayout: 'main', runtimeOptions: { allowProtoPropertiesByDefault: true, allowProtoMethodsByDefault: true, }, }))
+    app.set('view engine', 'handlebars')  
+
 //STATICS
 
     app.use(express.static(__dirname+'/public'));
-    app.use(express.static(__dirname+'/controller'));
+    app.use(express.static(__dirname+'/controllers'));
 
 //ROUTES
 
