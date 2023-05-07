@@ -23,6 +23,8 @@ const stationSchema = new mongoose.Schema({
 
 })
 
+//SET MODEL
 station = mongoose.model("sensorvalues", stationSchema)
 
+//EXPORTS
 module.exports = station

@@ -1,4 +1,4 @@
-function gData(){
+function loadFunction(){
 
     var ano = String(new Date().getFullYear());
     var dia = String(new Date().getDate()).padStart(2, "0");
@@ -7,6 +7,5 @@ function gData(){
     var data = document.getElementById("data");
 
     data.innerText = `${dia}/${mes}/${ano}`
-
 
 }

@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const session = require("express-session");
 const main = require("./routes/main");
+require('dotenv').config();
 
 //CONFIG
     //SESSION
@@ -16,6 +17,7 @@ const main = require("./routes/main");
 //STATICS
 
     app.use(express.static(__dirname+'/public'));
+    app.use(express.static(__dirname+'/controller'));
 
 //ROUTES
 
@@ -23,9 +25,7 @@ const main = require("./routes/main");
 
 //OTHERS
 
-const port = process.env.PORT || 8000
-
-app.listen(port, () => {
+app.listen(process.env.PORT || 8000, () => {
 
     console.log('Server on'); 
 

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 //DATABASE CONNECTION SETUP
 mongoose.set('strictQuery', true);
-mongoose.connect("mongodb+srv://Gilmar:YkMQKiygJuEqhdUB@estacaometeorologica.yhlhf5g.mongodb.net/test", {
+mongoose.connect(process.env.MONGO, {
 
     useNewUrlParser: true
 
@@ -16,5 +16,7 @@ mongoose.connect("mongodb+srv://Gilmar:YkMQKiygJuEqhdUB@estacaometeorologica.yhl
 
 })
 
+
+//EXPORTS
 module.exports = mongoose;
 
