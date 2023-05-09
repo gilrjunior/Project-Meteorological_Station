@@ -93,26 +93,26 @@
 
     <div id="linha"></div>
 
-     <section class="botao">
+        <section class="botao">
 
-        <button class="btn btn-success" id="bt1" onclick="change7()">Últimos 7 dias</button>
-        <button class="btn btn-success" id="bt2" onclick="change30()">Últimos 30 dias</button>
-        <button class="btn btn-success" id="bt3" onclick="changeY()">Últimos 365 dias</button>
+        <button class="btn btn-success" id="bt1" onclick="chart7days()">Últimos 7 dias</button>
+        <button class="btn btn-success" id="bt2" onclick="chart30days()">Últimos 30 dias</button>
+        <button class="btn btn-success" id="bt3" onclick="chart365days()">Últimos 365 dias</button>
 
     </section>
 
     <section class="graficos">
 
         <div class="graphic">
-            <img class="imgG" src="/img/graphic/dayHumidity7.png" id="G1" >
+            <canvas class="chart" id="ch1"></canvas>
         </div>
         
         <div class="graphic">
-            <img class="imgG" src="/img/graphic/dayRain7.png" id="G2" >
+            <canvas class="chart" id="ch2"></canvas>
         </div>
         
         <div class="graphic">
-            <img class="imgG" src="/img/graphic/dayTemp7.png" id="G3" >
+            <canvas class="chart" id="ch3"></canvas>
         </div>
         
     </section>
