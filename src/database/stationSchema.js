@@ -14,7 +14,22 @@ const stationSchema = new mongoose.Schema({
         type: String
 
     },
-    createAt: {
+    velVento: {
+
+        type: Number
+
+    },
+    dirVento: {
+
+        type: String
+
+    },
+    qtdAgua: {
+
+        type: Number
+
+    },
+    createdAt: {
 
         type: Date,
         default: Date.now()

@@ -1,7 +1,4 @@
-var myLineChart = [];
-
-
-function loadFunction(){
+function loadFunction(dados){
 
     var ano = String(new Date().getFullYear());
     var dia = String(new Date().getDate()).padStart(2, "0");
@@ -9,9 +6,9 @@ function loadFunction(){
 
     var data = document.getElementById("data");
 
-    chart7days(true);
-
-    data.innerText = `${dia}/${mes}/${ano}`
+    data.innerText = `${dia}/${mes}/${ano}`;
+    
+    charttoday(true, dados);
 
 }
 
@@ -21,7 +18,9 @@ function refresh() {
     
 }
 
-function standartChart(labels, data){
+var myLineChart = [];
+
+function standartChart(labels, temp, umid, precip){
 
     for(var i = 1; i < 4; i++){
 
@@ -29,10 +28,13 @@ function standartChart(labels, data){
 
         if(i == 1){
             name = "Temperatura °C"
+            data = temp;
         }else if(i == 2){
             name = "Umidade %"
+            data = umid
         }else{
             name = "Preciptação"
+            data = precip
         }
 
         const ctx = document.getElementById('ch'+i);
@@ -68,7 +70,7 @@ function standartChart(labels, data){
 
 }
 
-function chart7days(load){
+function chart7days(load, dados){
 
     if(!load){
 
@@ -76,35 +78,34 @@ function chart7days(load){
         
     }
 
-    var labels = [String(new Date().getDate()-6).padStart(2, "0"), String(new Date().getDate()-5).padStart(2, "0"), String(new Date().getDate()-4).padStart(2, "0"), String(new Date().getDate()-3).padStart(2, "0"), String(new Date().getDate()-2).padStart(2, "0"), String(new Date().getDate()-1).padStart(2, "0"), String(new Date().getDate()).padStart(2, "0")]
-    var data = [28, 29, 24, 22, 19, 21, 23]
-    
-    standartChart(labels, data);
+    const labels = dados.labels;
+    const temp =  dados.temp;
+    const umid = dados.umid;
+    const preci = dados.preci;
+
+    standartChart(labels, temp, umid, preci);
 
 }
 
-function chart30days(){
+function charttoday(load, dados){
 
-    deleteCharts();
+    console.log(dados)
 
-    var labels = [01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30];
-    var data = [25, 29, 24, 22, 19, 21, 23,20, 29, 19, 22, 19, 21, 18,28, 29, 27, 22, 19, 21, 23,21, 22, 24, 22, 19, 21, 23,28, 25, 24, 22, 19, 21, 23]
+    if(!load){
 
-    standartChart(labels, data);
+        deleteCharts();
+        
+    }
 
-}
+    const labels = dados.map((dado) => dado.createdAt);
+    const temp = dados.map((dado) => dado.temperatura);
+    const umid = dados.map((dado) => dado.umidade);
+    const preci = dados.map((dado) => dado.qtdAgua);
 
-function chart365days(){
-
-
-    deleteCharts();
-
-    var labels = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
-    var data = [25, 29, 24, 22, 19, 21, 23,20, 29, 19, 22, 19]
-
-    standartChart(labels, data);
+    standartChart(labels, temp, umid, preci);
 
 }
+
 
 function deleteCharts(){
 

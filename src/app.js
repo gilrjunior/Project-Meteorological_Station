@@ -18,7 +18,6 @@ require('dotenv').config();
 //HANDLEBARS    
     app.engine('handlebars', handlebars.engine({ defaultLayout: 'main', runtimeOptions: { allowProtoPropertiesByDefault: true, allowProtoMethodsByDefault: true, }, }))
     app.set('view engine', 'handlebars')  
-
 //STATICS
 
     app.use(express.static(__dirname+'/public'));

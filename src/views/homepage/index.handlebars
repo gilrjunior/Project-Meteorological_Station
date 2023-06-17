@@ -23,12 +23,17 @@
                                 <div class="col mt-4">
                                     <img class="icon" src="/img/Temp_frio.png" alt="">
                                     <p>Mínima</p>
-                                    <div class="dados" id="Tmin">{{temperatura}} °C</div>
+                                    <div class="dados" id="Tmin">{{information.temp_min}} °C</div>
+                                </div>
+                                 <div class="col mt-4">
+                                    <img class="icon" src="/img/Temp_atual.png" alt="">
+                                    <p>Atual</p>
+                                    <div class="dados" id="Tmin">{{information.temp_atual}} °C</div>
                                 </div>
                                 <div class="col mt-4">
                                     <img class="icon" src="/img/Temp_quente.png" alt="">
                                     <p>Máxima</p>
-                                    <div class="dados" id="Tmax">{{temperatura}} °C</div>
+                                    <div class="dados" id="Tmax">{{information.temp_max}} °C</div>
                                 </div>
                             </div>
                         </div>
@@ -42,12 +47,17 @@
                                 <div class="col mt-4">
                                     <img class="icon" src="/img/Umid_min.png" alt="">
                                     <p>Mínima</p>
-                                    <div class="dados" id="Umin">{{umidade}} %</div>
+                                    <div class="dados" id="Umin">{{information.umid_min}} %</div>
+                                </div>
+                                <div class="col mt-4">
+                                    <img class="icon" src="/img/Umid_atual.png" alt="">
+                                    <p>Atual</p>
+                                    <div class="dados" id="Umax">{{information.umid_atual}} %</div>
                                 </div>
                                 <div class="col mt-4">
                                     <img class="icon" src="/img/Umid_max.png" alt="">
                                     <p>Máxima</p>
-                                    <div class="dados" id="Umax">{{umidade}} %</div>
+                                    <div class="dados" id="Umax">{{information.umid_max}} %</div>
                                 </div>
                             </div>
                         </div>
@@ -61,12 +71,12 @@
                                 <div class="col mt-4">
                                     <img class="icon" src="/img/img_vento.png" alt="">
                                     <p>Velocidade</p>
-                                    <div class="dados" id="velVen">33 km/h</div>
+                                    <div class="dados" id="velVen">{{information.velVento}} km/h</div>
                                 </div>
                                 <div class="col mt-4">
-                                    <img class="icon" src="/img/vento_nordeste.png" alt="">
+                                    <img class="icon" src="/img/vento_{{information.dirVento}}.png" alt="">
                                     <p>Direção</p>
-                                    <div class="dados" id="dirV">NE</div>
+                                    <div class="dados" id="dirV">{{information.dirVento}}</div>
                                 </div>
                             </div>
                         </div>
@@ -80,7 +90,7 @@
                                 <div class=" mt-4">
                                     <img class="icon" src="/img/chuva_img.png" alt="">
                                     <p>Acumulada</p>
-                                    <div class="dados" id="chuvaAc">10 mm</div>
+                                    <div class="dados" id="chuvaAc">{{information.qtdAgua}} mm</div>
                                 </div>
                             </div>
                         </div>
@@ -95,11 +105,9 @@
 
         <section class="botao">
 
-        <button class="btn btn-success" id="bt1" onclick="chart7days()">Últimos 7 dias</button>
-        <button class="btn btn-success" id="bt2" onclick="chart30days()">Últimos 30 dias</button>
-        <button class="btn btn-success" id="bt3" onclick="chart365days()">Últimos 365 dias</button>
-
-    </section>
+            <button class="btn btn-success" id="bt1" onclick="charttoday(true)">Hoje</button>
+        
+        </section>
 
     <section class="graficos">
 
