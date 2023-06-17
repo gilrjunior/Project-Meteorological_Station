@@ -6,6 +6,7 @@ const router = express.Router();
 
         station.findOne().sort({_id: "desc"}).then((last_data) => {
 
+
             var information = new Object({
 
                 temp_atual: last_data.temperatura,
@@ -54,8 +55,6 @@ const router = express.Router();
                     preci: today_data.map((dado) => dado.qtdAgua)
 
                 })
-
-                console.log(today);
 
                 res.render("homepage/index", {information: information, today: today});
 
