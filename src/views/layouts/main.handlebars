@@ -13,7 +13,7 @@
     <link rel="icon" href="/img/favicon.png">
 </head>
 
-<body onload="loadFunction()">
+<body onload="loadFunction(JSON.parse('{{ today }}'))">
 
     {{>_header}}
     {{{body}}}

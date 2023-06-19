@@ -16,7 +16,7 @@ const router = express.Router();
                 umid_min: last_data.umidade,
                 umid_max: 0,
                 velVento: last_data.velVento,
-                dirVento: last_data.dirVento[0]+last_data.dirVento[1],
+                dirVento: last_data.dirVento,
                 qtdAgua: last_data.qtdAgua
 
             })
@@ -55,13 +55,15 @@ const router = express.Router();
                     preci: today_data.map((dado) => dado.qtdAgua)
 
                 })
+                
+                console.log(today.preci)
 
-                res.render("homepage/index", {information: information, today: today});
+                res.render("homepage/index", { information: information, today: JSON.stringify(today) });
 
             }).catch((err) => {
 
                 console.log(err)
-                res.render("homepage/index", {information: information});
+                //res.render("homepage/index", {information: information});
 
             })
 

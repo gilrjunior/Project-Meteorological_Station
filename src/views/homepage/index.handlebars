@@ -85,7 +85,7 @@
                 <div class="col-6">
                     <div class="p-5 alinhamento">
                         <div class="box">
-                            <p class="txtB">Chuva</p>
+                            <p class="txtB">Chuva Diária</p>
                             <div class="row">
                                 <div class=" mt-4">
                                     <img class="icon" src="/img/chuva_img.png" alt="">
@@ -105,7 +105,7 @@
 
         <section class="botao">
 
-            <button class="btn btn-success" id="bt1" onclick="charttoday(true)">Hoje</button>
+            <button class="btn btn-success" id="bt1" onclick="charttoday(false, JSON.parse('{{ today }}'))">Hoje</button>
         
         </section>
 

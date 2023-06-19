@@ -1,13 +1,13 @@
-function loadFunction(dados){
+function loadFunction(dados) {
 
     var ano = String(new Date().getFullYear());
     var dia = String(new Date().getDate()).padStart(2, "0");
-    var mes = String(new Date().getMonth()+1).padStart(2, "0");
+    var mes = String(new Date().getMonth() + 1).padStart(2, "0");
 
     var data = document.getElementById("data");
 
     data.innerText = `${dia}/${mes}/${ano}`;
-    
+
     charttoday(true, dados);
 
 }
@@ -15,45 +15,45 @@ function loadFunction(dados){
 function refresh() {
 
     location.reload();
-    
+
 }
 
 var myLineChart = [];
 
-function standartChart(labels, temp, umid, precip){
+function standartChart(labels, temp, umid, preci) {
 
-    for(var i = 1; i < 4; i++){
+    for (var i = 1; i < 4; i++) {
 
         var name = ""
 
-        if(i == 1){
+        if (i == 1) {
             name = "Temperatura °C"
             data = temp;
-        }else if(i == 2){
+        } else if (i == 2) {
             name = "Umidade %"
             data = umid
-        }else{
+        } else {
             name = "Preciptação"
-            data = precip
+            data = preci
         }
 
-        const ctx = document.getElementById('ch'+i);
+        const ctx = document.getElementById('ch' + i);
 
-        myLineChart[i-1] = new Chart(ctx, {
+        myLineChart[i - 1] = new Chart(ctx, {
             type: 'line',
             data: {
-            labels: labels,
-            datasets: [{
-                label: name,
-                data: data,
-                borderWidth: 2,
-                borderColor: "#3B8952"
-            }]
+                labels: labels,
+                datasets: [{
+                    label: name,
+                    data: data,
+                    borderWidth: 2,
+                    borderColor: "#3B8952"
+                }]
             },
             options: {
                 scales: {
                     y: {
-                    min: 16
+                        min: 16
                     }
                 },
                 plugins: {
@@ -70,7 +70,7 @@ function standartChart(labels, temp, umid, precip){
 
 }
 
-function chart7days(load, dados){
+/*function chart7days(load, dados){
 
     if(!load){
 
@@ -85,29 +85,28 @@ function chart7days(load, dados){
 
     standartChart(labels, temp, umid, preci);
 
-}
+}*/
 
-function charttoday(load, dados){
+function charttoday(load, dados) {
 
-    console.log(dados)
 
-    if(!load){
+    if (!load) {
 
         deleteCharts();
-        
+
     }
 
-    const labels = dados.map((dado) => dado.createdAt);
-    const temp = dados.map((dado) => dado.temperatura);
-    const umid = dados.map((dado) => dado.umidade);
-    const preci = dados.map((dado) => dado.qtdAgua);
+    const labels = dados.labels;
+    const temp = dados.temp;
+    const umid = dados.umid;
+    const preci = dados.preci;
 
     standartChart(labels, temp, umid, preci);
 
 }
 
 
-function deleteCharts(){
+function deleteCharts() {
 
     myLineChart[0].destroy();
     myLineChart[1].destroy();
