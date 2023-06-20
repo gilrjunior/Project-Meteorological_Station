@@ -21,14 +21,14 @@ const router = express.Router();
 
             })
 
-            var year = String(new Date().getFullYear());
-            var day = String(new Date().getDate()).padStart(2, "0");
-            var month = String(new Date().getMonth()+1).padStart(2, "0");
+            var year = String(last_data.createdAt.getFullYear());
+            var day = String(last_data.createdAt.getDate()).padStart(2, "0");
+            var month = String(last_data.createdAt.getMonth()+1).padStart(2, "0");
 
-            var start = new Date("2023-05-30"); //new Date(`${year}-${month}-${day}`);
-            var end = new Date("2023-05-31"); //new Date(`${year}-${month}-${day}`);
+            var start = new Date(`${year}-${month}-${day}`); //new Date("2023-05-30");
+            var end = new Date(`${year}-${month}-${day}`); //new Date("2023-05-31");
 
-            //end.setDate(end.getDate()+1)
+            end.setDate(end.getDate()+1)
 
             station.find({createdAt: {$gte:start, $lte: end}}).then((today_data) => {
  
@@ -55,15 +55,13 @@ const router = express.Router();
                     preci: today_data.map((dado) => dado.qtdAgua)
 
                 })
-                
-                console.log(today.preci)
 
                 res.render("homepage/index", { information: information, today: JSON.stringify(today) });
 
             }).catch((err) => {
 
                 console.log(err)
-                //res.render("homepage/index", {information: information});
+                res.render("homepage/index", {information: information});
 
             })
 
